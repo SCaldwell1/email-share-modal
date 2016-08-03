@@ -44,12 +44,16 @@
       <div class="email-modal-form-group <?php echo $required;?>">
         <label for="message">Message:<small><span class="text-danger"><?php echo $field;?></small></label>
         <textarea class="form-control message" name="contact_message" rows="5" id="message" placeholder="Message" required readonly></textarea>
+      &nbsp;
+      </div>
+     <div class="email-modal-form-group">
+      <p><button class="btn btn-primary" type="submit" form="shareForm" value="Submit" name="share_page_button" >Share</button></p>
       </div>
     </form>
         </div>
 
         <div class="modal-footer ">
-          <button class="btn btn-primary share_page" type="submit" form="shareForm" value="Submit" name="share_page_button" >Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
