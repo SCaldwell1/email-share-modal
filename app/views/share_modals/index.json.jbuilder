@@ -1,0 +1,1 @@
+json.array! @share_modals, partial: 'share_modals/share_modal', as: :share_modal
