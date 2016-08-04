@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users
   resources :share_modals
+
+  match '/share_modals',     to: 'share_modals#share_form',             via: 'get'
+resources "share_modals", only: [:share_form]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
