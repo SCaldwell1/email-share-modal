@@ -28,26 +28,23 @@
         </div>
 
         <div class="modal-body ">
-            <form action="<?php the_permalink(); ?>" method="post" role="form" id="shareForm">
-                <div class="email-modal-form-group <?php echo $required;?>">
-                    <label for="name">Your Name:<small><span class="text-danger"><?php echo $field;?></span></small></label>
-                    <input type="text" class="form-control name" name="contact_name" id="name" placeholder="Name"  value="<%= current_user.name%>" readonly required>
+            <%= form_for @share_form, :html => {:class => 'form-horizontal', :style=>'width:90%' } do |f| %>
+                <div class="form-group">
+                	 <label for="name" style="margin-left:15px">Your Name: </label>
+                  <input type="text" class="form-control" name="share_page_name" placeholder="Name" value="<%= current_user.name%>" style="margin-left:15px" readonly required>
                 </div>
 
-                <div class="email-modal-form-group <?php echo $required;?>">
-                    <label for="email">Email:<sup>*</sup> <small><span class="text-danger"><?php echo $field;?></small></label>
-                    <input type="email" class="form-control email" name="contact_email" id="email" placeholder="Email" required>  
-                </div>
+              <div class="form-group">
+                <label for="email" style="margin-left:15px">Recipient Email:</label>
+                <input type="email" class="form-control" name="share_page_email"  placeholder="Email" style="margin-left:15px" required>  
+              </div>
 
-                <div class="email-modal-form-group <?php echo $required;?>">
-                    <label for="message">Message:<small><span class="text-danger"><?php echo $field;?></small></label>
-                    <textarea class="form-control message" name="contact_message" rows="5" id="message" placeholder="Message" required readonly></textarea>
-                    &nbsp;
-                </div>
-                <div class="email-modal-form-group">
-                    <p><button class="btn btn-primary" type="submit" form="shareForm" value="Submit" name="share_page_button" >Share</button></p>
-                </div>
-            </form>
+              <div class="form-group">
+                <label for="message" style="margin-left:15px">Message:</label>
+                <textarea class="form-control" name="share_page_message" rows="5" id="share-page-message" placeholder="Message" style="margin-left:15px" required readonly></textarea>
+              </div>
+                 <button class="btn btn-primary" type="submit" value="Submit" name="share_page_button" >Submit</button>
+            <% end %>      
         </div>
         <div class="modal-footer ">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -56,15 +53,13 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $('div').find('a:contains("Contact")').addClass("taxworld-active");
-        $(document).ready(function () {
-            $(".email_share_button").click(function(){
-                var link = $(location).attr('href');
-                $("#message").val(link);
-            });          
-        });
-    });
+jQuery(document).ready(function($) {
+  $(document).ready(function () {
+    $(".email_share_button").click(function(){
+      var link = $(location).attr('href');
+      $("#share-page-message").val(link);
+    });          
+  });
+});
 </script>

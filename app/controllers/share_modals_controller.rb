@@ -10,6 +10,7 @@ class ShareModalsController < ApplicationController
   # GET /share_modals/1
   # GET /share_modals/1.json
   def show
+    @share_form = share_modals_path
   end
 
   # GET /share_modals/new
@@ -24,7 +25,7 @@ class ShareModalsController < ApplicationController
   # POST /share_modals
   # POST /share_modals.json
   def create
-    @share_modal = ShareModal.new(share_modal_params)
+    @share_modal = ShareModal.new
 
     respond_to do |format|
       if @share_modal.save
